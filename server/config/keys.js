@@ -1,7 +1,6 @@
 //export an object with keys of googleClientId, googleClientSecret,mongoURI, and cookieKey
-
+// pw:"iz8YAjowlEMdhHW8"
 module.exports = {
   mongoURI:
-    "mongodb+srv://ryanb:colette12345@cluster0-aurkz.gcp.mongodb.net/Accounts?retryWrites=true&w=majority",
-  // cookieKey: "aasr452gs6sdasfsdsgxcvzxcg5aseetvasfa"
+    "mongodb+srv://ryan:iz8YAjowlEMdhHW8@cluster0-8sliz.mongodb.net/test?retryWrites=true&w=majority"
 };
