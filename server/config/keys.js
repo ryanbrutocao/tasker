@@ -2,5 +2,5 @@
 // pw:"userPW"
 module.exports = {
   mongoURI:
-    "mongodb+srv://testUser:userPW@cluster0-8sliz.mongodb.net/test?retryWrites=true&w=majority"
+    "mongodb+srv://testUser:userPW@cluster0-8sliz.mongodb.net/TaskerApp?retryWrites=true&w=majority"
 };
