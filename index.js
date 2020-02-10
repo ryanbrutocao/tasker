@@ -10,14 +10,19 @@ require('./models/Product');
 
 const app = express();
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/node-react-starter`);
+// mongoose.Promise = global.Promise;
+// mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/node-react-starter`);
+mongoose.connect(keys.mongoURI);
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //IMPORT ROUTES
 require('./routes/productRoutes')(app);
+//generates a new application that represents a running express app
+const routes = require("./routes/productRoutes");
+app.use(routes);
 
 // This will redirect all the requests to our frontend application, unless we specify any route before this code.
 if (process.env.NODE_ENV === 'production') {
