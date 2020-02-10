@@ -1,28 +1,34 @@
 import React, { useState, useEffect } from "react";
 
 // SERVICES
-import productService from './services/productService';
+import taskService from './services/taskService';
 
 function App() {
-  const [products, setproducts] = useState(null);
+  const [tasks, settasks] = useState(null);
 
   useEffect(() => {
-    if (!products) {
-      getProducts();
+    if (!tasks) {
+      getTasks();
     }
   })
 
-  const getProducts = async () => {
-    let res = await productService.getAll();
+  const getTasks = async () => {
+    let res = await taskService.getAll();
     console.log(res);
-    setproducts(res);
+    settasks(res);
   }
 
-  const renderProduct = product => {
+  const renderTask = task => {
     return (
-      <li key={product._id} className="list__item product">
-        <h3 className="product__name">{product.name}</h3>
-        <p className="product__description">{product.description}</p>
+      <li key={task._id} className="list__item task">
+        <h3 className="task__title">{task.title}</h3>
+        <p className="task__category">{task.description}</p>
+        <p className="task__description">{task.description}</p>
+        <p className="task__due_by">{task.due_by}</p>
+        <p className="task__created">{task.created}</p>
+        <p className="task__status">{task.status}</p>
+        <p className="task__id">{task._id}</p>
+
       </li>
     );
   };
@@ -30,10 +36,10 @@ function App() {
   return (
     <div className="App">
       <ul className="list">
-        {(products && products.length > 0) ? (
-          products.map(product => renderProduct(product))
+        {(tasks && tasks.length > 0) ? (
+          tasks.map(task => renderTask(task))
         ) : (
-            <p>No products found</p>
+            <p>No tasks found</p>
           )}
       </ul>
     </div>

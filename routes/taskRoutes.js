@@ -43,43 +43,43 @@
 // }
 // /routes/productRoutes.js
 const mongoose = require('mongoose');
-const Product = mongoose.model('products');
+const Task = mongoose.model('tasks');
 
 module.exports = (app) => {
 
-  app.get(`/api/product`, async (req, res) => {
-    let products = await Product.find();
-    return res.status(200).send(products);
+  app.get(`/api/task`, async (req, res) => {
+    let tasks = await Task.find();
+    return res.status(200).send(tasks);
   });
 
-  app.post(`/api/product`, async (req, res) => {
-    let product = await Product.create(req.body);
+  app.post(`/api/task`, async (req, res) => {
+    let task = await Task.create(req.body);
     return res.status(201).send({
       error: false,
-      product
+      task
     })
   })
 
-  app.put(`/api/product/:id`, async (req, res) => {
+  app.put(`/api/task/:id`, async (req, res) => {
     const { id } = req.params;
 
-    let product = await Product.findByIdAndUpdate(id, req.body);
+    let task = await Task.findByIdAndUpdate(id, req.body);
 
     return res.status(202).send({
       error: false,
-      product
+      task
     })
 
   });
 
-  app.delete(`/api/product/:id`, async (req, res) => {
+  app.delete(`/api/task/:id`, async (req, res) => {
     const { id } = req.params;
 
-    let product = await Product.findByIdAndDelete(id);
+    let task = await Task.findByIdAndDelete(id);
 
     return res.status(202).send({
       error: false,
-      product
+      task
     })
 
   })

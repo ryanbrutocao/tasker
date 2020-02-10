@@ -6,7 +6,7 @@ const keys = require("./server/config/keys.js");
 const bodyParser = require('body-parser');
 
 // IMPORT MODELS
-require('./models/Product');
+require('./models/Task');
 
 const app = express();
 
@@ -19,9 +19,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //IMPORT ROUTES
-require('./routes/productRoutes')(app);
+require('./routes/taskRoutes')(app);
 //generates a new application that represents a running express app
-const routes = require("./routes/productRoutes");
+const routes = require("./routes/taskRoutes");
 app.use(routes);
 
 // This will redirect all the requests to our frontend application, unless we specify any route before this code.
