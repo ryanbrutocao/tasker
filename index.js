@@ -1,6 +1,8 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const keys = require("./server/config/keys.js");
+
 const bodyParser = require('body-parser');
 
 // IMPORT MODELS
@@ -17,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //IMPORT ROUTES
 require('./routes/productRoutes')(app);
 
+// This will redirect all the requests to our frontend application, unless we specify any route before this code.
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
@@ -26,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 
 }
-
+//  
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`)
